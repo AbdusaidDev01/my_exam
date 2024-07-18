@@ -1,0 +1,25 @@
+import asyncio
+from aiogram import Bot, Dispatcher, types, filters
+
+
+bot = Bot(token="")
+dp = Dispatcher(bot=bot)
+
+
+@dp.message(filters.Command("start"))
+async def start(message: types.Message):
+    await message.answer("Asalomu aleykum  echo hushkelibsiz")
+
+
+@dp.message()
+async def echo(message: types.Message):
+    await message.answer(message.text)
+
+async def main():
+    await dp.start_polling(bot)
+
+if __name__ == "__main__":
+    asyncio.run(main())
+
+
+
